@@ -8,8 +8,11 @@ steps:
     - echo -n "Hello"
 
 steps:
-- name: docker  
-  image: plugins/docker
+- name: publish  
+  image: plugins/gcr
   settings:
     repo: arenstar/docker-skeleton
     tags: latest
+    registry: eu.gcr.io
+    json_key:
+      from_secret: google-credentials
