@@ -1,0 +1,15 @@
+kind: pipeline
+name: test
+
+steps:
+- name: build
+  image: golang
+  commands:
+    - echo -n "Hello"
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: arenstar/docker-skeleton
+    tags: latest
