@@ -10,8 +10,12 @@ steps:
 steps:
 - name: publish  
   image: plugins/gcr
+  tags:
+  - ${DRONE_BRANCH}
+  - ${DRONE_COMMIT_SHA}
+  - ${DRONE_BUILD_NUMBER}
   settings:
-    repo: arenstar/docker-skeleton
+    repo: primeval-falcon-186518/docker-skeleton
     tags: latest
     registry: eu.gcr.io
     json_key:
