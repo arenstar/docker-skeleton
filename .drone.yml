@@ -1,6 +1,10 @@
 kind: pipeline
 name: test
 
+platform:
+  os: linux
+  arch: amd64
+
 steps:
 - name: build
   image: golang
@@ -10,7 +14,9 @@ steps:
 steps:
 - name: publish  
   image: plugins/gcr
-  secrets: [google-credentials]
+  environment:
+    google-credentials:
+      from_secret: google-credentials
   settings:
     repo: primeval-falcon-186518/docker-skeleton
     tags:
@@ -24,3 +30,10 @@ steps:
   when:
     event: push
     branch: master
+
+---
+kind: secret
+name: google-credentials
+get:
+  path: google-credentials
+  name: keyfile
