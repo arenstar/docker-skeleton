@@ -10,6 +10,7 @@ steps:
 steps:
 - name: publish  
   image: plugins/gcr
+  secrets: [google-credentials]
   settings:
     repo: primeval-falcon-186518/docker-skeleton
     tags:
