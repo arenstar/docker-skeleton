@@ -20,3 +20,6 @@ steps:
     registry: eu.gcr.io
     json_key:
       from_secret: google-credentials
+  when:
+    event: push
+    branch: master
